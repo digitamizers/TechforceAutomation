@@ -379,7 +379,7 @@ class Dlib extends TLogger
  * Description: Does the setup such as Loading Data,Launching WebDriver instance at the begining of every testcase
  * ######################################################################################################
  */
-	public static void onTestCaseStart()
+	public static void onTestCaseStart() throws InterruptedException
 	{
 		String TestCaseDescription = getTestCaseDescription(CurrentTestCase);
 		String CurrentBrowser = getCurrentBrowser(CurrentTestCase);
@@ -388,7 +388,7 @@ class Dlib extends TLogger
         TestData.loadData();
         System.out.println("Start:" + CurrentTestCase + ", Iteration:" + CurrentIteration);
         driver = WebLibrary.launchBrowser(CurrentBrowser);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 /* ######################################################################################################
  * Method Name: getCurrentBrowser
@@ -673,7 +673,7 @@ class Dlib extends TLogger
  */
 	public static void onExecutionFinish() 
 	{
-		report.close();
+		//report.close();
 		WebDriver driver = new FirefoxDriver();
 		driver.get(ResultFilePath);
 		driver.manage().window().maximize();

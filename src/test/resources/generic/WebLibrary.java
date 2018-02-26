@@ -7,14 +7,19 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 /* ######################################################################################################
@@ -77,7 +82,7 @@ public class WebLibrary extends FrameworkLibrary
     
 /* ######################################################################################################
  * Method Name: SetTextAndEnter
- * Description: To clear contents , enter text in WebElement and then click on Escape
+ * Description: To clear contents , enter text in WebElement and then click on Enter
  * Input Parameters: Element Xpath
  * Output: True/False
  * ######################################################################################################
@@ -110,7 +115,7 @@ public class WebLibrary extends FrameworkLibrary
 
 /* ######################################################################################################
  * Method Name: SetTextAndTab
- * Description: To clear contents , enter text in WebElement and then click on Escape
+ * Description: To clear contents , enter text in WebElement and then click on Tab
  * Input Parameters: Element Xpath
  * Output: True/False
  * ######################################################################################################
@@ -308,7 +313,7 @@ public class WebLibrary extends FrameworkLibrary
  * Output: WebDriver Instance
  * ######################################################################################################
  */
-	//@SuppressWarnings("deprecation")
+	@SuppressWarnings("deprecation")
 	public static WebDriver launchBrowser(String BrowserName)
 	{
 		WebDriver Tempdriver = null;
@@ -316,10 +321,13 @@ public class WebLibrary extends FrameworkLibrary
 		{
 			case "firefox":
 			{
-				System.setProperty("webdriver.gecko.driver",GlobalVariables.CurrentDirectory + "\\" +"JarFiles\\BrowserServers\\geckodriver.exe");
-			    DesiredCapabilities dc = DesiredCapabilities.firefox();
-				dc.setCapability("marionette", true);
-				Tempdriver = new FirefoxDriver(dc);
+				FirefoxProfile profile = new FirefoxProfile();
+				profile.setAcceptUntrustedCertificates(true);
+				DesiredCapabilities caps = DesiredCapabilities.firefox();
+				caps.setCapability(FirefoxDriver.PROFILE, profile);
+				
+			    System.setProperty("webdriver.gecko.driver",GlobalVariables.CurrentDirectory + "\\" +"JarFiles\\BrowserServers\\geckodriver.exe");
+				Tempdriver = new FirefoxDriver();
 				break;
 			}
 			case "internetexplorer":

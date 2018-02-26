@@ -122,9 +122,9 @@ public class WorklogReport extends UserLibrary {
 		else
 			LogEventWithScreenshot("fail", "Unable to Enter Worklog Report Command");
 		
-		driver.findElement(By.xpath("//input[@type='date']")).sendKeys(FromDate, Keys.TAB, ToDate, Keys.TAB,
-				Keys.ENTER);
-
+		driver.findElement(By.xpath("//input[@type='date']")).sendKeys(FromDate, Keys.TAB, ToDate, Keys.TAB, Keys.ENTER);
+		
+		wait(10);
 		status = Exist("//p[text()='These are the Issues that you are looking for']");
 		if (status) {
 			// Click on chat window button

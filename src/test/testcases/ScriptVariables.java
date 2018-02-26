@@ -7,6 +7,12 @@ package test.testcases;
 */
 public class ScriptVariables 
 {
+	//Type YES
+	public static String YES;
+	public static String NO;
+	
+	
+	
     //Registration App Page
     public static String RegFullName;
     public static String RegEmail;
@@ -17,7 +23,12 @@ public class ScriptVariables
     public static String URL;
     public static String UserName;
     public static String Password;
-    //public static int TimeInSec;
+   
+   //Jira Configure
+    public static String JiraConfigureCommand;
+    public static String JiraURL;
+    public static String JiraEmail;
+    public static String JiraPassword;
     
     
     //Lost Password
@@ -25,10 +36,10 @@ public class ScriptVariables
     
     //Standup meeting
     public static String StandupCommand;
-    public static String SelectIssues;
-    public static String ProgressPercentage;
-    public static String ProgressDescription;
-    public static String TimeSpent;
+    public static String StandupSelectIssues;
+    public static int StandupProgressPercentage;
+    public static String StandupProgressDescription;
+    public static String StandupTimeSpent;
     
     //Search Issues
     public static String SearchIssuesCommand;
