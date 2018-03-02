@@ -228,14 +228,7 @@ public class SearchIssues extends UserLibrary {
 		else{
 			LogEventWithScreenshot("","");
 		}
+		Logout();
 	}
 	
-	/*boolean status;
-	// Login
-	status = Login(URL, UserName, Password);
-	if (status)
-		LogEventWithScreenshot("pass", "Home page is Displayed");
-	else
-		LogEventWithScreenshot("fail", "Unable to display Home page");
-*/
 }

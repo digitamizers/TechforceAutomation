@@ -76,9 +76,6 @@ public static void TC05_VerifyRegisterApp() {
             LogEventWithScreenshot("info", "close the popup window");
         else
             LogEventWithScreenshot("fail", "Unable to close the popup window");
-        
-        
-            
-        
+             
     }
 }

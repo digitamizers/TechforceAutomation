@@ -40,6 +40,8 @@ public class ScriptVariables
     public static int StandupProgressPercentage;
     public static String StandupProgressDescription;
     public static String StandupTimeSpent;
+    public static String SandupBandwidthTime;
+    public static String StandupHindrances;
     
     //Search Issues
     public static String SearchIssuesCommand;
@@ -66,6 +68,8 @@ public class ScriptVariables
     
     //Update issues Status
     public static String UpdateStatusCommand;
+    public static String UpdateStatusIssue;
+    public static String UpdateStatusIssueStatus;
     
     
     //Work log Report
@@ -84,7 +88,10 @@ public class ScriptVariables
     
     //Create Sprint
     public static String CreateSprintCommand;
-    public static String SprintBoard;
+    public static String CreateSprintBoard;
+    public static String CreateSprintName;
+    public static String CreateSprintFromDate;
+    public static String CreateSprintTodate;
     
     
     

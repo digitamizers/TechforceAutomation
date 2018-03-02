@@ -48,7 +48,6 @@ public class AssigneeIssue extends UserLibrary {
 				LogEventWithScreenshot("fail", "Unable to Assigne Issue");
 		}
 
-		//wait(10);
 		Logout();
 	}
 	

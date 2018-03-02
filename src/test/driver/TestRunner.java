@@ -14,7 +14,7 @@ public class TestRunner extends FrameworkLibrary
  * Description: The Main Method of the Complete Framework
  * ######################################################################################################
  */
-	public static void main(String []args) throws InterruptedException 
+	public static void main(String []args) 
 	{
 		onExecutionStart();
 		String SelectedTestCases = getTestCases();
@@ -34,7 +34,7 @@ public class TestRunner extends FrameworkLibrary
 	    	 }
 	    }
  	    
- 	  // onExecutionFinish();	
+ 	  //onExecutionFinish();	
  	   
 	}
 }

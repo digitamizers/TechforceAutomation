@@ -22,7 +22,7 @@ public class UserLibrary extends WebLibrary
 	{
 		boolean loginstatus = true;
 		boolean status;
-
+		
 		status = OpenUrl(URL);
 		if (status)
 			LogEventWithScreenshot("info", "Techforce.AI Application is Launch and Running");
