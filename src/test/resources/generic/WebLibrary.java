@@ -1,28 +1,21 @@
 package test.resources.generic;
 
-import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.CapabilityType;
+
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 /* ######################################################################################################
@@ -394,7 +387,7 @@ public class WebLibrary extends FrameworkLibrary
     	Boolean stepStatus = true;
     	try
     	{
-    		driver.get("https://app.sandbox.techforce.ai");
+    		driver.get(URL);
     		driver.manage().window().maximize();
     	}
     	catch(Exception e)

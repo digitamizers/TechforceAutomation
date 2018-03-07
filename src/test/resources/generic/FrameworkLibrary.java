@@ -1,4 +1,4 @@
-package test.resources.generic;
+  package test.resources.generic;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,7 +18,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 //import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import com.relevantcodes.extentreports.ExtentReports;
@@ -671,12 +670,12 @@ class Dlib extends TLogger
  * Description: Closes Report and Invoke the result summary.html 
  * ######################################################################################################
  */
-	public static void onExecutionFinish() {
+	/*public static void onExecutionFinish() {
 		report.close();
 		WebDriver driver = new FirefoxDriver();
 		driver.get(ResultFilePath);
 		driver.manage().window().maximize();
-	}
+	}*/
 	
 /* ######################################################################################################
  * Method Name: getIterations

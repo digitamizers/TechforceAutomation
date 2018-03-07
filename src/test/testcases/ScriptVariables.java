@@ -12,7 +12,6 @@ public class ScriptVariables
 	public static String NO;
 	
 	
-	
     //Registration App Page
     public static String RegFullName;
     public static String RegEmail;
@@ -94,6 +93,21 @@ public class ScriptVariables
     public static String CreateSprintTodate;
     
     
+    //Velocity chart
+    public static String VelocityChartCommand;
+    public static String VelocityChartBoard;
+    
+    //Move issues to sprint
+    public static String MoveIssueToSprintCommand;
+    public static String MoveIssueToSprintBoard;
+    public static String MoveIssueToSprintBoradSprint;
+    public static String MoveIssuesToSprintIssues;
+    
+    
+    // IssueStatus
+    public static String IssueStatusCommand;
+    public static String IssueStatusProject;
+    public static String IssueStatusIssue;
     
     
 
