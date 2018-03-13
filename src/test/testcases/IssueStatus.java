@@ -1,7 +1,7 @@
 package test.testcases;
 
 public class IssueStatus extends UserLibrary {
- 
+
 	public static void TC141_VerifyIssueStatus() {
 		boolean status;
 		// Home page
@@ -19,38 +19,43 @@ public class IssueStatus extends UserLibrary {
 			LogEventWithScreenshot("fail", "Unable to Enter Sprint Command");
 		
 		// Select the Project
-		status = SelectOPtionByValue("(//SELECT[@class='ac-input ac-multichoiceInput'])[1]", IssueStatusProject);
+		status = SelectOPtionByText("(//SELECT[@class='ac-input ac-multichoiceInput'])[1]", IssueStatusProject);
 		if (status)
-			System.out.println("select Project");
+			LogEventWithScreenshot("info", "select Project");
 		else
-			System.out.println( "Unable to Select Project");
+			LogEventWithScreenshot("fail", "Unable to Select Project");
+		
 		// Click OK button
 		status = ClickElement("(//BUTTON[@type='button'][text()='Ok'][text()='Ok'])[1]");
 		if (status)
-			System.out.println("Click OK button");
+			LogEventWithScreenshot("info", "Click OK button");
 		else
-			System.out.println( "Unable to Click OK button");
-		
-		// Select Issue
-		status = SelectOPtionByValue("(//SELECT[@class='ac-input ac-multichoiceInput'])[2]", IssueStatusIssue);
+			LogEventWithScreenshot("fail","Unable to Click OK button");
+
+		status = Exist("//P[text()='I think you dont have access to fetch users!']");
 		if (status)
-			System.out.println("select Issue");
-		else
-			System.out.println( "Unable to Select issue");
-		
-		// Click OK button
-		status = ClickElement("(//BUTTON[@type='button'][text()='Ok'][text()='Ok'])[2]");
-		if (status)
-			System.out.println("Click OK button");
-		else
-			System.out.println( "Unable to Click OK button");
-		
-		// Complete Msg
-		status = Exist("//P[text()='Issues that you are looking for']");
-		if (status)
-			System.out.println("display the issue status");
-		else
-			System.out.println( "Unable to Display the Issue status");
-		
+			LogEventWithScreenshot("pass", "I think you don't have any issues");
+		else {
+			// Select Issue
+			status = SelectOPtionByValue("(//SELECT[@class='ac-input ac-multichoiceInput'])[2]", IssueStatusIssue);
+			if (status)
+				LogEventWithScreenshot("info", "select Issue");
+			else
+				LogEventWithScreenshot("fail", "Unable to Select issue");
+
+			// Click OK button
+			status = ClickElement("(//BUTTON[@type='button'][text()='Ok'][text()='Ok'])[2]");
+			if (status)
+				LogEventWithScreenshot("info", "Click OK button");
+			else
+				LogEventWithScreenshot("fail", "Unable to Click OK button");
+
+			// Complete Msg
+			status = Exist("//P[text()='Issues that you are looking for']");
+			if (status)
+				LogEventWithScreenshot("pass", "successfully display the issue status");
+			else
+				LogEventWithScreenshot("info", "Unable to Display the Issue status");
 		}
+	}
 }

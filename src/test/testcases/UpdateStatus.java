@@ -13,7 +13,7 @@ public class UpdateStatus extends UserLibrary {
 			LogEventWithScreenshot("fail","Unable to display Home Page");
 		
 		// Enter command
-		status = SetText("//input[@class='wc-shellinput']", UpdateStatusCommand);
+		status = SetTextAndEnter("//input[@class='wc-shellinput']", UpdateStatusCommand);
 		if (status)
 			LogEventWithScreenshot("info", "Entered Update Issue Status  command");
 		else
@@ -42,4 +42,5 @@ public class UpdateStatus extends UserLibrary {
 		
 		Logout();
 	}
+
 }

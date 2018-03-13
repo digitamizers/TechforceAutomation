@@ -4,7 +4,7 @@ public class LoginApp extends UserLibrary {
 	
     public static void TC01_VerifyLogin()
     {
-        boolean status;
+        Boolean status;
         status = OpenUrl(URL);
         if (status)
             LogEventWithScreenshot("info", "Application is Up and Running");

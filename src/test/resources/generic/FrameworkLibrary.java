@@ -18,7 +18,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 //import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -387,7 +389,7 @@ class Dlib extends TLogger
         TestData.loadData();
         System.out.println("Start:" + CurrentTestCase + ", Iteration:" + CurrentIteration);
         driver = WebLibrary.launchBrowser(CurrentBrowser);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
 	}
 /* ######################################################################################################
  * Method Name: getCurrentBrowser
@@ -670,12 +672,13 @@ class Dlib extends TLogger
  * Description: Closes Report and Invoke the result summary.html 
  * ######################################################################################################
  */
-	/*public static void onExecutionFinish() {
+	public static void onExecutionFinish() {
 		report.close();
-		WebDriver driver = new FirefoxDriver();
+		//WebDriver driver = new FirefoxDriver();
+		WebDriver driver = new ChromeDriver();
 		driver.get(ResultFilePath);
 		driver.manage().window().maximize();
-	}*/
+	}
 	
 /* ######################################################################################################
  * Method Name: getIterations

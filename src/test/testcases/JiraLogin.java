@@ -26,7 +26,7 @@ public class JiraLogin extends UserLibrary {
 			status = Exist("//P[text()='You already have jira configured wanna reconfigure it ?']");
 			// Enter yes.
 			if (status) {
-				status = SetTextAndEnter("//input[@class='wc-shellinput']", YES);
+				status = SetTextAndEnter("//input[@class='wc-shellinput']", "yes");
 				if (status)
 					LogEventWithScreenshot("info", "Entered yes");
 				else
@@ -62,8 +62,6 @@ public class JiraLogin extends UserLibrary {
 		}
 		Logout();
 	}
-
-	
 
 	public static void JiraFormValue() {
 

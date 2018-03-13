@@ -2,18 +2,23 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/user/Desktop/WorkSpace/Techforce_Automation/JarFiles/Jars/commons-codec-1.9.jar"/>
-	<classpathentry kind="lib" path="C:/Users/user/Desktop/WorkSpace/Techforce_Automation/JarFiles/Jars/extentreports-java-2.40.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/user/Desktop/WorkSpace/Techforce_Automation/JarFiles/Jars/freemarker-2.3.23.jar"/>
-	<classpathentry kind="lib" path="C:/Users/user/Desktop/WorkSpace/Techforce_Automation/JarFiles/Jars/jsoup-1.8.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/user/Desktop/WorkSpace/Techforce_Automation/JarFiles/Jars/poi-3.13-20150929.jar"/>
-	<classpathentry kind="lib" path="C:/Users/user/Desktop/WorkSpace/Techforce_Automation/JarFiles/Jars/poi-excelant-3.13-20150929.jar"/>
-	<classpathentry kind="lib" path="C:/Users/user/Desktop/WorkSpace/Techforce_Automation/JarFiles/Jars/poi-ooxml-3.13-20150929.jar"/>
-	<classpathentry kind="lib" path="C:/Users/user/Desktop/WorkSpace/Techforce_Automation/JarFiles/Jars/poi-ooxml-schemas-3.13-20150929.jar"/>
-	<classpathentry kind="lib" path="C:/Users/user/Desktop/WorkSpace/Techforce_Automation/JarFiles/Jars/poi-scratchpad-3.13-20150929.jar"/>
-	<classpathentry kind="lib" path="C:/Users/user/Desktop/WorkSpace/Techforce_Automation/JarFiles/Jars/reflections-0.9.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/user/Desktop/WorkSpace/Techforce_Automation/JarFiles/Jars/xmlbeans-2.6.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/user/Desktop/WorkSpace/TechforceAutomation/JarFiles/Jars/sqlite-jdbc-3.8.11.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/user/Downloads/selenium-server-standalone-3.9.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Desktop/jarfiles/commons-codec-1.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Desktop/jarfiles/commons-collections4-4.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Desktop/jarfiles/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Desktop/jarfiles/curvesapi-1.04.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Desktop/jarfiles/extentreports-java-2.40.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Desktop/jarfiles/freemarker-2.3.23.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Desktop/jarfiles/jsoup-1.8.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Desktop/jarfiles/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Desktop/jarfiles/poi-3.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Desktop/jarfiles/poi-examples-3.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Desktop/jarfiles/poi-excelant-3.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Desktop/jarfiles/poi-ooxml-3.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Desktop/jarfiles/poi-ooxml-schemas-3.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Desktop/jarfiles/poi-scratchpad-3.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Desktop/jarfiles/reflections-0.9.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Desktop/jarfiles/sqlite-jdbc-3.8.11.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Desktop/jarfiles/xmlbeans-2.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Downloads/HRM_Automation/JarFiles/Jars/selenium-server-standalone-2.53.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

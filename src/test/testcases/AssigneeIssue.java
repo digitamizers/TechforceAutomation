@@ -1,7 +1,7 @@
 package test.testcases;
 
 public class AssigneeIssue extends UserLibrary {
-
+	
 	public static void TC41_VerifyAssigneIssue() {
 
 		boolean status;
@@ -15,7 +15,7 @@ public class AssigneeIssue extends UserLibrary {
 		// Enter Assignee Issues Command
 		status = SetTextAndEnter("//input[@class='wc-shellinput']", AssigneeIssuesCommand);
 		if (status)
-			LogEventWithScreenshot("pass", "Entered Assignee Issues Command");
+			LogEventWithScreenshot("info", "Entered Assignee Issues Command");
 		else
 			LogEventWithScreenshot("fail", "Unable to Enter Assignee Issues Command");
 
@@ -25,20 +25,34 @@ public class AssigneeIssue extends UserLibrary {
 		} else {
 
 			// Select the issues
-			status = SelectOPtionByValueAndTab("(//SELECT[@class='ac-input ac-multichoiceInput'])[1]",
+			status = SelectOPtionByValue("(//SELECT[@class='ac-input ac-multichoiceInput'])[1]",
 					SelectAssigneeIssue);
 			if (status)
 				LogEventWithScreenshot("pass", "Selected Assignee Issue");
 			else
 				LogEventWithScreenshot("fail", "Unable to Select Assignee Issues");
 
+			//Click Assignee Issue button
+			status=ClickElement("(//BUTTON[@type='button'][text()='Ok'])[1]");
+			if (status)
+				LogEventWithScreenshot("pass", "Click Assignee Issues Ok button");
+			else
+				LogEventWithScreenshot("fail", "Unable to click Assignee issues Ok button");
+			
 			// Select the User
-			status = SelectOPtionByValueAndTab("(//SELECT[@class='ac-input ac-multichoiceInput'])[2]",
+			status = SelectOPtionByText("(//SELECT[@class='ac-input ac-multichoiceInput'])[2]",
 					SelectAssigneeUser);
 			if (status)
 				LogEventWithScreenshot("pass", "Selected Assignee User");
 			else
 				LogEventWithScreenshot("fail", "Unable to Select Assignee User");
+			
+			//Click Assignee User button
+			status=ClickElement("(//BUTTON[@type='button'][text()='Ok'])[2]");
+			if (status)
+				LogEventWithScreenshot("pass", "Click Assignee User Ok button");
+			else
+				LogEventWithScreenshot("fail", "Unable to click Assignee user Ok button");
 
 			// Issue Assigned Successfully!
 			status = Exist("//p[text()='Issue Assigned Successfully!']");
@@ -50,5 +64,4 @@ public class AssigneeIssue extends UserLibrary {
 
 		Logout();
 	}
-	
 }

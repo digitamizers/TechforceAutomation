@@ -288,11 +288,11 @@ public class WebLibrary extends FrameworkLibrary
     		Highlight(ObjectXpath);
     		ObjectXpath = ObjectXpath + "/option[@value='" + Option + "']";
         	driver.findElement(By.xpath(ObjectXpath)).click();
-        	String selectedvalue = driver.findElement(By.xpath(ObjectXpath)).getAttribute("text");
+        	/*String selectedvalue = driver.findElement(By.xpath(ObjectXpath)).getAttribute("text");
         	if(!selectedvalue.trim().equalsIgnoreCase(Option.trim()))
         	{
         		stepStatus = false;
-        	}
+        	}*/
         }
         catch (Exception e)
         {
@@ -347,9 +347,10 @@ public class WebLibrary extends FrameworkLibrary
 				case "firefox":
 				{
 					System.setProperty("webdriver.gecko.driver",GlobalVariables.CurrentDirectory + "\\" +"JarFiles\\BrowserServers\\geckodriver.exe");
-				    DesiredCapabilities dc = DesiredCapabilities.firefox();
+				    /*DesiredCapabilities dc = DesiredCapabilities.firefox();
 					dc.setCapability("marionette", true);
-					Tempdriver = new FirefoxDriver(dc);
+					*/
+					Tempdriver = new FirefoxDriver();
 					break;
 				}
 				case "internetexplorer":

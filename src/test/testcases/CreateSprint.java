@@ -43,7 +43,7 @@ public class CreateSprint extends UserLibrary {
 			LogEventWithScreenshot("fail", "Unable to Enter Sprint Name");
 
 		// Enter From Date and To date
-		driver.findElement(By.xpath("//input[@type='date']")).sendKeys(FromDate, Keys.TAB, ToDate, Keys.TAB,
+		driver.findElement(By.xpath("//input[@type='date']")).sendKeys(CreateSprintFromDate, Keys.TAB, CreateSprintTodate, Keys.TAB,
 				Keys.ENTER);
 
 		// Click Submit
@@ -63,4 +63,5 @@ public class CreateSprint extends UserLibrary {
 		Logout();
 
 	}
+
 }

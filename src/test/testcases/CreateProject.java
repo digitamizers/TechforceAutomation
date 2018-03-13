@@ -1,7 +1,5 @@
 package test.testcases;
 
-
-
 public class CreateProject extends UserLibrary {
 
 	public static void TC101_VerifyCreateProject() {
@@ -29,30 +27,48 @@ public class CreateProject extends UserLibrary {
 			LogEventWithScreenshot("fail", "Unable to enter Project Name");
 		
 		// Enter Project Key
-		status=SetTextAndTab("//input[@placeholder='Project Key']", ProjectKey);
+		status=SetText("//input[@placeholder='Project Key']", ProjectKey);
 		if(status)
 			LogEventWithScreenshot("pass", "Entered Project Key");
 		else
 			LogEventWithScreenshot("fail", "Unable to enter Project Key");
 		
-		
+		// Click OK button
+		status = ClickElement("(//BUTTON[@type='button'][text()='Ok'])[1]");
+		if (status)
+			LogEventWithScreenshot("info", "Click OK button");
+		else
+			LogEventWithScreenshot("fail", "Unable to Click OK button");
+
 		//Select Project Type
-		status=SelectOPtionByValueAndTab("//select[@class='ac-input ac-multichoiceInput']", ProjectType);
+		status=SelectOPtionByText("//select[@class='ac-input ac-multichoiceInput']", ProjectType);
 		if(status)
 			LogEventWithScreenshot("pass", "Select the Project type");
 		else
 			LogEventWithScreenshot("fail", "Unable to select Project type");
 		
-		
+		// Click OK button
+		status = ClickElement("(//BUTTON[@type='button'][text()='Ok'])[2]");
+		if (status)
+			LogEventWithScreenshot("info", "Click OK button");
+		else
+			LogEventWithScreenshot("fail", "Unable to Click OK button");
+
 		//Select Project Scheme Type
-		status=SelectOPtionByValueAndTab("(//SELECT[@class='ac-input ac-multichoiceInput'])[2]",ProjectSchemeType);
+		status=SelectOPtionByText("(//SELECT[@class='ac-input ac-multichoiceInput'])[2]",ProjectSchemeType);
 		if(status)
 			LogEventWithScreenshot("pass", "Select the Project Scheme Type");
 		else
 			LogEventWithScreenshot("fail","Unable to select the Project schema type");
 		
+		// Click OK button
+		status = ClickElement("(//BUTTON[@type='button'][text()='Ok'])[3]");
+		if (status)
+			LogEventWithScreenshot("info", "Click OK button");
+		else
+			LogEventWithScreenshot("fail", "Unable to Click OK button");
 		
-		status=Exist("//P[text()='Project Created with "+ ProjectKey +" key Successfully!']");
+		status=Exist("//P[contains(text(),'"+ProjectKey+"')]");
 		if(status)
 			LogEventWithScreenshot("pass", "Create Project successful");
 		else {
@@ -65,6 +81,5 @@ public class CreateProject extends UserLibrary {
 		Logout();
 		
 	}
-	
 	
 }

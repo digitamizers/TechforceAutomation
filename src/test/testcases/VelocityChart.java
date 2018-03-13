@@ -1,8 +1,7 @@
 package test.testcases;
 
 public class VelocityChart extends UserLibrary {
-	
-	public static void TC121_VerifyVelocityChart() {
+public static void TC121_VerifyVelocityChart() {
 		
 		boolean status;
 		// Login
@@ -65,7 +64,5 @@ public class VelocityChart extends UserLibrary {
 		Logout();
 		
 	}
-	// svg[@class='recharts-surface']
-	//option[text()='AB board']
-
+	
 }

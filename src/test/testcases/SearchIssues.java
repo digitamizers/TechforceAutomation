@@ -1,13 +1,7 @@
 package test.testcases;
 
 public class SearchIssues extends UserLibrary {
-/*##################################################################################
- * Method Name: TC21_VerifySearchIssuesBySummary()
- * Description: 
- * Input parameters: 
- * Output: 
- *###################################################################################
- */
+	
 	public static void TC21_VerifySearchIssuesBySummary() {
 
 		boolean status;
@@ -407,4 +401,6 @@ public class SearchIssues extends UserLibrary {
 				LogEventWithScreenshot("fail","Unable to display issues");
 		}
 	}
+
+	
 }

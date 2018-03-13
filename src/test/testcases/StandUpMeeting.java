@@ -2,7 +2,154 @@ package test.testcases;
 
 public class StandUpMeeting extends UserLibrary {
 
-	public static void TC61_VerifyStandupMeetingAddWorklogNoHindrancesNoBamdwidth() {
+	/*public static void TC61_VerifyStandupMeeting() {
+
+		boolean status;
+		// Home page
+		status = Login(URL, UserName, Password);
+		if (status)
+			LogEventWithScreenshot("pass", "Home Page is Displayed");
+		else
+			LogEventWithScreenshot("fail", "Unable to display Home page");
+
+		// Enter Standup command
+		status = SetTextAndEnter("//input[@class='wc-shellinput']", StandupCommand);
+		if (status)
+			LogEventWithScreenshot("info", "Entered Standup meeting command");
+		else
+			LogEventWithScreenshot("fail", "Unable to Enter Standup meeting command");
+
+		//
+		status = Exist("//p[text()='What issue did you work on yesterday?']");
+		if (status)
+			LogEventWithScreenshot("info", "info");
+		else
+			LogEventWithScreenshot("fail", "info");
+
+		// No In Progress issues
+		status = Exist("//P[text()='I think you dont have any Inprogress Issues']");
+		if (status) {
+			LogEventWithScreenshot("pass", "I think you dont have any Inprogress Issues");
+		} else {
+			// Select the in progress issues
+			status = SelectOPtionByValue("//select[class='ac-input ac-multichoiceInput']", StandupSelectIssues);
+			if (status)
+				LogEventWithScreenshot("info", "Select the Inprogress Issues");
+			else
+				LogEventWithScreenshot("fail", "Unable to Select to Inprogres issues");
+
+			// Click Ok button
+			status = ClickElement("//BUTTON[@type='button'][text()='Ok']");
+			if (status)
+				LogEventWithScreenshot("info", "Click on Button");
+			else
+				LogEventWithScreenshot("fail", "Unable to click on button");
+
+			// Enter Progress Percentage
+			if (StandupProgressPercentage <= 100) {
+				if (StandupProgressPercentage >= 0) {
+					String ProgressPercentage = Integer.toString(StandupProgressPercentage);
+					status = SetText("//input[@type='number']", ProgressPercentage);
+					if (status)
+						LogEventWithScreenshot("info", "Entered Progress Percentage");
+				} else
+					LogEventWithScreenshot("fail", "Unable to enter Progress Percentage");
+			} else
+				LogEventWithScreenshot("fail", "Unable to enter Progress Percentage");
+
+			// Enter Work Progress Description
+			status = SetText("//textarea[@class='ac-input ac-textInput ac-multiline']", StandupProgressDescription);
+			if (status)
+				LogEventWithScreenshot("info", "Entered Progress Description");
+			else
+				LogEventWithScreenshot("fail", "Unable to enter Progress Description");
+
+			// Enter Time Spent on the issues
+			boolean timeh = StandupTimeSpent.contains("h");
+			boolean timed = StandupTimeSpent.contains("d");
+
+			if (timeh || timed) {
+				status = SetText("//input[@placeholder='Enter Time Spent']", StandupTimeSpent);
+				if (status)
+					LogEventWithScreenshot("info", "Entered Time spent on the issues");
+				else
+					LogEventWithScreenshot("pass", "Unable to enter time spent");
+			} else
+				LogEventWithScreenshot("fail", "Unable to enter time spent");
+
+			// Click on Submit Button
+			status = Exist("//button[@type='button'][text()='Submit']");
+			if (status)
+				LogEventWithScreenshot("info", "clicked on submit button");
+			else
+				LogEventWithScreenshot("fail", "unable to click on submit button");
+
+			// add worklog YES button
+			status = ClickElement("(//BUTTON[@type='button'][text()='Yes'])[1]");
+			if (status)
+				LogEventWithScreenshot("info", "Click on YES button");
+			else {
+				status = ClickElement("(//BUTTON[@type='button'][text()='No'])[1]");
+				if (status)
+					LogEventWithScreenshot("info", "Click on NO button");
+				else {
+					LogEventWithScreenshot("fail", "Unable to click on YES or NO buttons");
+				}
+			}
+
+			// add hindrances
+			status = ClickElement("(//BUTTON[@type='button'][text()='Yes'])[2]");
+			if (status) {
+				LogEventWithScreenshot("info", "Click on YES button");
+
+				status = SetText("(//TEXTAREA[@class='ac-input ac-textInput ac-multiline'])[2]", StandupHindrances);
+				if (status)
+					LogEventWithScreenshot("info", "Enter the hindrances");
+				else
+					LogEventWithScreenshot("fail", "Unable to enter hindrances");
+
+				status = ClickElement("(//BUTTON[@type='button'][text()='OK'][text()='OK'])[1]");
+				if (status)
+					LogEventWithScreenshot("info", "Click on Button");
+				else
+					LogEventWithScreenshot("fail", "Unable to click on button");
+			} else {
+				status = ClickElement("(//BUTTON[@type='button'][text()='No'])[2]");
+				if (status)
+					LogEventWithScreenshot("info", "Click on NO button");
+				else {
+					LogEventWithScreenshot("fail", "Unable to click on YES or NO buttons");
+				}
+			}
+
+			// add band width
+			status = ClickElement("(//BUTTON[@type='button'][text()='Yes'])[3]");
+			if (status) {
+				LogEventWithScreenshot("info", "Click on YES button");
+
+				status = SetText("(//INPUT[@type='text'])[2]", SandupBandwidthTime);
+				if (status)
+					LogEventWithScreenshot("info", "Enter the hindrances");
+				else
+					LogEventWithScreenshot("fail", "Unable to enter hindrances");
+
+				status = ClickElement("(//BUTTON[@type='button'][text()='OK'][text()='OK'])[2]");
+				if (status)
+					LogEventWithScreenshot("info", "Click on Button");
+				else
+					LogEventWithScreenshot("fail", "Unable to click on button");
+			} else {
+				status = ClickElement("(//BUTTON[@type='button'][text()='No'])[3]");
+				if (status)
+					LogEventWithScreenshot("info", "Click on NO button");
+				else {
+					LogEventWithScreenshot("fail", "Unable to click on YES or NO buttons");
+				}
+			}
+
+		}
+*/
+	/*public static void TC61_VerifyStandupMeetingAddWorklogNoHindrancesNoBamdwidth() {
 
 		boolean status;
 		// Home page
@@ -33,7 +180,7 @@ public class StandUpMeeting extends UserLibrary {
 		}
 		else {
 			// Select the in progress issues
-			status = SelectOPtionByText("//select[class='ac-input ac-multichoiceInput']", StandupSelectIssues);
+			status = SelectOPtionByValue("//select[class='ac-input ac-multichoiceInput']", StandupSelectIssues);
 			if (status)
 				LogEventWithScreenshot("info", "Select the Inprogress Issues");
 			else
@@ -355,9 +502,9 @@ public class StandUpMeeting extends UserLibrary {
 		}
 		Logout();
 
-	}
+	}*/
 
-	public static void TC64_VerifyStandupMeetingAddWorklogAddHindrancesAddBandwidth() {
+/*	public static void TC64_VerifyStandupMeetingAddWorklogAddHindrancesAddBandwidth() {
 
 		boolean status;
 		// Login
@@ -483,7 +630,7 @@ public class StandUpMeeting extends UserLibrary {
 		Logout();
 
 	}
-
+*//*
 	public static void TC65_VerifyStatndupMeetingNoWorklogNoHindrancesNOBandwidth() {
 
 		
@@ -961,4 +1108,5 @@ public class StandUpMeeting extends UserLibrary {
 
 		Logout();
 	}
-}
+
+*/}
