@@ -29,19 +29,28 @@ public class SearchIssues extends UserLibrary {
 		 * LogEventWithScreenshot("info", "Clicked on summary checkbox"); else
 		 * LogEventWithScreenshot("fail", "Unable to click on summary checkbox");
 		 */
-
-		status = ClickElement("//button[@type='button'][text()='OK']");
+		
+		//Click Ok button
+		status = ClickElement("(//BUTTON[@type='button'][text()='OK'][text()='OK'])[1]");
 		if (status)
 			LogEventWithScreenshot("info", "Clicked on OK button");
 		else
 			LogEventWithScreenshot("fail", "Unable to click on OK button");
 
 		// Enter search keyword
-		status = SetTextAndTab("//input[@class='ac-input ac-textInput']", SearchKeyword);
+		status = SetText("//input[@class='ac-input ac-textInput']", SearchKeyword);
 		if (status)
 			LogEventWithScreenshot("info", "Enter Summary Keyword");
 		else
 			LogEventWithScreenshot("fail", "Unable to enter summary keyword");
+		
+		// Click Ok button
+		status = ClickElement("(//BUTTON[@type='button'][text()='OK'][text()='OK'])[2]");
+		if (status)
+			LogEventWithScreenshot("info", "Clicked on OK button");
+		else
+			LogEventWithScreenshot("fail", "Unable to click on OK button");
+		
 
 		// Select the Types of issues
 		String TypeOfIssue = new String(SearchIssueType);
@@ -96,6 +105,13 @@ public class SearchIssues extends UserLibrary {
 				LogEventWithScreenshot("fail", "Unable to close the chat window");
 			
 			LogEventWithScreenshot("pass", "Issues displyed");
+		}
+		else{
+			status = Exist("//P[text()='I think there are no issues!']");
+			if(status)
+				LogEventWithScreenshot("pass","I Think there are no issues");
+			else
+				LogEventWithScreenshot("fail","There was a error present");
 		}
 		
 		Logout();
@@ -159,8 +175,9 @@ public class SearchIssues extends UserLibrary {
 				LogEventWithScreenshot("fail", "Unable to click  on " + Type + " checkbox");
 		}
 		
-		// Click on OK button
-		status = ClickElement("//*[@id='root']/div/div[2]/div/div[3]/div/div/div[2]/div[1]/div/div[3]/div[1]/div/div/div/div/div/div[3]/div[1]/div/button");
+		// Click on OK button 
+		status=ClickElement("(//BUTTON[@type='button'][text()='Ok'][text()='Ok'])[1]");
+		//status = ClickElement("//*[@id='root']/div/div[2]/div/div[3]/div/div/div[2]/div[1]/div/div[3]/div[1]/div/div/div/div/div/div[3]/div[1]/div/button");
 		if (status)
 			LogEventWithScreenshot("info", "Clicked on OK button");
 		else
@@ -179,7 +196,8 @@ public class SearchIssues extends UserLibrary {
 		}
 		
 		// Click on OK button
-		status = ClickElement("//*[@id='root']/div/div[2]/div/div[3]/div/div/div[2]/div[1]/div/div[6]/div[1]/div/div/div/div/div/div[3]/div[1]/div/button");
+		status = ClickElement("(//BUTTON[@type='button'][text()='Ok'][text()='Ok'])[2]");
+		//status = ClickElement("//*[@id='root']/div/div[2]/div/div[3]/div/div/div[2]/div[1]/div/div[6]/div[1]/div/div/div/div/div/div[3]/div[1]/div/button");
 		if (status)
 			LogEventWithScreenshot("info", "Clicked on OK button");
 		else
@@ -200,8 +218,8 @@ public class SearchIssues extends UserLibrary {
 		}
 
 		// Clicked on OK button after select issues status
-		status = ClickElement(
-				"//*[@id='root']/div/div[2]/div/div[3]/div/div/div[2]/div[1]/div/div[7]/div[1]/div/div/div/div/div/div[3]/div[1]/div/button");
+		status = ClickElement("(//BUTTON[@type='button'][text()='Ok'][text()='Ok'])[3]");
+		//status = ClickElement("//*[@id='root']/div/div[2]/div/div[3]/div/div/div[2]/div[1]/div/div[7]/div[1]/div/div/div/div/div/div[3]/div[1]/div/button");
 		if (status)
 			LogEventWithScreenshot("info", "Clicked on OK button");
 		else
@@ -220,7 +238,11 @@ public class SearchIssues extends UserLibrary {
 			LogEventWithScreenshot("pass", "Issues displyed");
 		}
 		else{
-			LogEventWithScreenshot("","");
+			status = Exist("//P[text()='I think there are no issues!']");
+			if(status)
+				LogEventWithScreenshot("pass","I Think there are no issues");
+			else
+				LogEventWithScreenshot("fail","There was a error present");
 		}
 		Logout();
 	}
@@ -379,7 +401,7 @@ public class SearchIssues extends UserLibrary {
 			if (status)
 				LogEventWithScreenshot("info","Clicked on " + Status + " checkbox");
 			else
-				System.out.println("Unable to click  on " + Status + " checkbox");
+				LogEventWithScreenshot("fail", "Unable to click  on " + Status + " checkbox");
 		}
 		
 		// Click on OK button
@@ -387,7 +409,7 @@ public class SearchIssues extends UserLibrary {
 		if(status)
 			LogEventWithScreenshot("info","Click OK button");
 		else
-			System.out.println("Unable click Ok button");
+			LogEventWithScreenshot("fail","Unable click Ok button");
 		
 		// Completed Mesages
 		status = Exist("//P[text()='These are the Issues that you are looking for']");
@@ -402,5 +424,6 @@ public class SearchIssues extends UserLibrary {
 		}
 	}
 
+	
 	
 }

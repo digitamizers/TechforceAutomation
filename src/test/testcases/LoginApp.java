@@ -1,5 +1,7 @@
 package test.testcases;
 
+import org.openqa.selenium.By;
+
 public class LoginApp extends UserLibrary {
 	
     public static void TC01_VerifyLogin()
@@ -33,25 +35,31 @@ public class LoginApp extends UserLibrary {
             LogEventWithScreenshot("fail", "Unable to Click on login");
         
         
-        status = Exist("//button/div[contains(.,'Das')]");
-        if (status)
+        /*status = Exist("//div[@class='wc-message-groups']");
+		if (status) {
+			LogEventWithScreenshot("pass", "Login is sucessful");
+			Logout();
+		}
+		else 
+			LogEventWithScreenshot("fail", "Login is not sucessful");
+        */
+        
+        
+        status = Exist("//DIV[@class='wc-message-groups']");
+        if (status) {
             LogEventWithScreenshot("pass", "Login is sucessful");
-        else
-            LogEventWithScreenshot("pass", "Login is not sucessful");
+            Logout();
+        }
+        // If both email id and password fields are empty then below code is executed
+        else {
+            String errorMessage = driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div/div/div[1]")).getText();
+            status = Exist("/html/body/div[2]/div/div[1]/div/div/div[1]");
+            if (status) 
+                LogEventWithScreenshot("pass", errorMessage + " is displayed");
+            else 
+                LogEventWithScreenshot("fail", "There was an errors");
+        }
         
-        
-        ClickElement(".//*[@id='root']/div/div[1]/div/div[1]/div/div[5]/div/div/button");
-        status = ClickElement("html/body/div[2]/div/div/div/div/div/div[2]/span/div/div/div");
-        if (status)
-            LogEventWithScreenshot("info", "Clicked on Sign Out");
-        else
-            LogEventWithScreenshot("fail", "Unable to click on Sign Out");
-
-        status = Exist("//*[@id='email']");
-        if (status)
-            LogEventWithScreenshot("pass", "Sign Out is successful");
-        else
-            LogEventWithScreenshot("fail", "Sign Out is Not successful");
         
     }
 }

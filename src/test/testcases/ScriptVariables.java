@@ -60,9 +60,9 @@ public class ScriptVariables
     
     //Work log Report
     public static String WorklogReportCommand;
-    public static String UsersReport;
-    public static String FromDate;
-    public static String ToDate;
+    public static String WorklogReportUsers;
+    public static String WorklogReportFromDate;
+    public static String WorklogReportToDate;
     
     
     //Update issues Status
@@ -98,35 +98,24 @@ public class ScriptVariables
     public static String CreateIssueSelectUser;
     public static String CreateIssueSelectBoard;
     public static String CreateIssueSelectSprint;
+    public static String CreateIssueKey;
     
     
-    
-/*	// Standup meeting
+	// Standup meeting
 	public static String StandupCommand;
 	public static String StandupSelectIssues;
-	public static int StandupProgressPercentage;
+	public static String StandupProgressPercentage;
 	public static String StandupProgressDescription;
 	public static String StandupTimeSpent;
 	public static String SandupBandwidthTime;
-	public static String StandupHindrances;*/
+	public static String StandupHindrances;
     
     
     //Lost Password
    // public static String EmailId;
     
     
-    /*
-           
-    
-    //Assignee Issues
-    public static String AssigneeIssuesCommand;
-    public static String SelectAssigneeIssue;
-    public static String SelectAssigneeUser;
-    
-    
-  
    
-    */
   
 
 }

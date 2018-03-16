@@ -57,5 +57,9 @@ public class IssueStatus extends UserLibrary {
 			else
 				LogEventWithScreenshot("info", "Unable to Display the Issue status");
 		}
+		
+		status = Exist("//P[text()='Due to error I shall leave it here']");
+		if(status)
+			LogEventWithScreenshot("fail","This message not showing 'Due to error I shall leave it here'");
 	}
 }

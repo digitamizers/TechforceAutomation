@@ -163,6 +163,28 @@ public class WebLibrary extends FrameworkLibrary
         }
         return stepStatus;
     }
+	
+	/* ######################################################################################################
+	 * Method Name: GetText
+	 * Description: To verify the existence of WebElement
+	 * Input Parameters: Element Xpath
+	 * Output: True/False
+	 * ######################################################################################################
+	 */
+		public static Boolean GetText(String ObjectXpath)
+	    {
+	        Boolean stepStatus = true;
+	        try
+	        {
+	        	Highlight(ObjectXpath);
+	        	driver.findElement(By.xpath(ObjectXpath)).getText();
+	        }
+	        catch (Exception e)
+	        {
+	            stepStatus = false;
+	        }
+	        return stepStatus;
+	    }
 	/* ######################################################################################################
 	 * Method Name: SelectMenuOption
 	 * Description: To perform Click operation on a menu item

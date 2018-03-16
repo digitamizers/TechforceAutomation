@@ -7,7 +7,7 @@ public class CreateSprint extends UserLibrary {
 
 	public static void TC111_VerifyCreateSprint() {
 		boolean status;
-		// Home page
+	/*	// Home page
 		status = Login(URL, UserName, Password);
 		if (status)
 			LogEventWithScreenshot("pass", "Home Page is Displayed");
@@ -22,9 +22,9 @@ public class CreateSprint extends UserLibrary {
 			LogEventWithScreenshot("fail", "Unable to Enter Sprint Command");
 
 		// Selected Sprint Board
-		status = SelectOPtionByValue("//SELECT[@class='ac-input ac-multichoiceInput']", CreateSprintBoard);
+		status = SelectOPtionByText("//SELECT[@class='ac-input ac-multichoiceInput']", CreateSprintBoard);
 		if (status)
-			LogEventWithScreenshot("info", "Select Sprint board");
+			LogEventWithScreenshot("info", "Select "+ CreateSprintBoard +" board");
 		else
 			LogEventWithScreenshot("fail", "Unable to select Sprint board");
 
@@ -38,7 +38,7 @@ public class CreateSprint extends UserLibrary {
 		// Enter Sprint Name
 		status = SetText("(//INPUT[@placeholder='Sprint 1'])", CreateSprintName);
 		if (status)
-			LogEventWithScreenshot("info", "Enter Sprint Name");
+			LogEventWithScreenshot("info", "Enter Sprint Name as "+CreateSprintName);
 		else
 			LogEventWithScreenshot("fail", "Unable to Enter Sprint Name");
 
@@ -60,7 +60,23 @@ public class CreateSprint extends UserLibrary {
 		else
 			LogEventWithScreenshot("fail", "Unable to sprint create successfuuly");
 
-		Logout();
+		Logout();*/
+		
+		
+		//Jira login
+		JiraLogin(JiraURL,JiraEmail, JiraPassword);
+		status = ClickElement("//*[@id=\"navigation-app\"]/div/div/div[1]/div[1]/div/div[1]/div/div[1]/div/div[2]/div/div[1]/button/div");
+		if(status)
+			LogEventWithScreenshot("info", "Click Ok button");
+		else
+			LogEventWithScreenshot("fail", "Unable to click");
+		
+		status = SetText("//INPUT[@type='text']",CreateSprintBoard);
+		if(status)
+			LogEventWithScreenshot("info", "Click Ok button");
+		else
+			LogEventWithScreenshot("fail", "Unable to click");
+		
 
 	}
 

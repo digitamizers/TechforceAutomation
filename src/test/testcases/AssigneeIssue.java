@@ -61,6 +61,10 @@ public class AssigneeIssue extends UserLibrary {
 			else
 				LogEventWithScreenshot("fail", "Unable to Assigne Issue");
 		}
+		
+		status = Exist("//P[text()='error processing']");
+		if(status)
+			LogEventWithScreenshot("fail","'Error processing' not showing");
 
 		Logout();
 	}
