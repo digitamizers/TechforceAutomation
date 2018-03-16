@@ -22,36 +22,36 @@ public class UserLibrary extends WebLibrary
 	{
 		boolean loginstatus = true;
 		boolean status;
-
+		
+		//Launch Application
 		status = OpenUrl(URL);
 		if (status)
 			LogEventWithScreenshot("info", "Techforce.AI Application is Launch and Running");
 		else
 			LogEventWithScreenshot("fail", "Unable to Launch Techforce.AI Application");
 		
-		
+		// Enter Email Id
 		status = SetText("//input[@type='email']", UID);
 		if (status)
 			LogEventWithScreenshot("info", "Entered UserName");
 		else
 			LogEventWithScreenshot("fail", "Unable to Enter UserName");
 
-		
+		// Enter password
 		status = SetText("//input[@type='password']", Password);
 		if (status)
 			LogEventWithScreenshot("info", "Entered Password");
 		else
 			LogEventWithScreenshot("fail", "Unable to Enter Password");
 
-		
-		
+		// Click Login button
 		status = ClickElement("//button[@class='login-button'][text()='login']");
 		if (status)
 			LogEventWithScreenshot("info", "Clicked on Login");
 		else
 			LogEventWithScreenshot("fail", "Unable to Click on login");
 
-		
+		// Check chat window exist or not
 		status = Exist("//div[@class='wc-message-groups']");
 		if (status)
 			LogEventWithScreenshot("pass", "Login is sucessful");
@@ -90,4 +90,95 @@ public class UserLibrary extends WebLibrary
 		
 		return status;
 	}
+
+	/*
+	 * ######################################################################################################
+	 *  Method Name: JiraLogin
+	 *  Description: To Login to Jira Application,Based on UID,Password
+	 *  Input Parameters:URL,UID,Password
+	 *  Output: True/False 
+	 * ######################################################################################################
+	 */
+	public static boolean JiraLogin(String URL, String UID, String Password) {
+		
+		boolean loginstatus = true;
+		boolean status;
+		
+		// Launch App
+		status = OpenUrl(URL);
+		if (status)
+			LogEventWithScreenshot("info", "Jira Application is Launch and Running");
+		else
+			LogEventWithScreenshot("fail", "Unable to Launch Jira Application");
+		
+		//Enter Email
+		status = SetText("//input[@type='email']", UID);
+		if (status)
+			LogEventWithScreenshot("info", "Entered UserName");
+		else
+			LogEventWithScreenshot("fail", "Unable to Enter UserName");
+		
+		// Click on continue
+		status=ClickElement("(//SPAN[text()='Continue'])[1]");
+		if(status)
+			LogEventWithScreenshot("info","Clicked on  the continue button");
+		else
+			LogEventWithScreenshot("fail", "Unable to click on the continue button");
+		
+		// Enter Passsword
+		status = SetText("//input[@type='password']", Password);
+		if (status)
+			LogEventWithScreenshot("info", "Entered Password");
+		else
+			LogEventWithScreenshot("fail", "Unable to Enter Password");
+		
+		// Click on submit button
+		status = ClickElement("//button[@id='login-submit']");
+		if (status)
+			LogEventWithScreenshot("info", "Clicked on Login");
+		else {
+			LogEventWithScreenshot("fail", "Unable to Click on login");
+			loginstatus=false;
+		}
+		return loginstatus;
+	}
+
+	
+	/* ######################################################################################################
+	 * Method Name: JiraLogout
+	 * Description: To Logout the Speedops Appilication
+	 * Input:
+	 * Output: True/False
+	 * ######################################################################################################
+	 */
+	public static boolean JiraLogout() 
+	{
+		wait(10);
+		boolean status;
+		
+		//Click on profile button
+		status = ClickElement("(//SPAN[@role='img'])[6]");
+		if(status)
+			LogEventWithScreenshot("info","Click on profile button");
+		else
+			LogEventWithScreenshot("fail", "Unable to click on profile button");
+		
+		// click on Logout button
+		status = ClickElement("//SPAN[@class='icVecj'][text()='Log out']");
+		if (status)
+			LogEventWithScreenshot("info", "Clicked on Sign Out button");
+		else
+			LogEventWithScreenshot("fail", "Unable to clickon Clicked on Sign Out");
+		
+		//identify element
+		status = Exist("(//DIV[@class='dashboard-item-content '])[2]");
+		if (status)
+			LogEventWithScreenshot("fail", "Sign Out is not successful");
+		else
+			LogEventWithScreenshot("pass", "Sign Out is  successful");
+		
+		return status;
+
+		
+	}	
 }

@@ -15,6 +15,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
+
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 /* ######################################################################################################
@@ -77,7 +78,7 @@ public class WebLibrary extends FrameworkLibrary
     
 /* ######################################################################################################
  * Method Name: SetTextAndEnter
- * Description: To clear contents , enter text in WebElement and then click on Escape
+ * Description: To clear contents , enter text in WebElement and then click on Enter
  * Input Parameters: Element Xpath
  * Output: True/False
  * ######################################################################################################
@@ -110,7 +111,7 @@ public class WebLibrary extends FrameworkLibrary
 
 /* ######################################################################################################
  * Method Name: SetTextAndTab
- * Description: To clear contents , enter text in WebElement and then click on Escape
+ * Description: To clear contents , enter text in WebElement and then click on Tab
  * Input Parameters: Element Xpath
  * Output: True/False
  * ######################################################################################################
@@ -162,6 +163,28 @@ public class WebLibrary extends FrameworkLibrary
         }
         return stepStatus;
     }
+	
+	/* ######################################################################################################
+	 * Method Name: GetText
+	 * Description: To verify the existence of WebElement
+	 * Input Parameters: Element Xpath
+	 * Output: True/False
+	 * ######################################################################################################
+	 */
+		public static Boolean GetText(String ObjectXpath)
+	    {
+	        Boolean stepStatus = true;
+	        try
+	        {
+	        	Highlight(ObjectXpath);
+	        	driver.findElement(By.xpath(ObjectXpath)).getText();
+	        }
+	        catch (Exception e)
+	        {
+	            stepStatus = false;
+	        }
+	        return stepStatus;
+	    }
 	/* ######################################################################################################
 	 * Method Name: SelectMenuOption
 	 * Description: To perform Click operation on a menu item
@@ -242,6 +265,35 @@ public class WebLibrary extends FrameworkLibrary
 	        }
 	        return stepStatus;
 		}
+		
+/* ######################################################################################################
+ * Method Name: SelectOPtionByContainsTextAndTab
+ * Description: To select option from dropdown based on visible text
+ * Input Parameters: Element Xpath , Text of an option
+ * Output: True/False
+ * ######################################################################################################
+ */
+			public static Boolean SelectOPtionByContainsTextAndTab(String ObjectXpath,String Option)
+			{
+				Boolean stepStatus = true;
+		        try
+		        {
+		        	Highlight(ObjectXpath);
+		        	String ObjectXpath1 = ObjectXpath + "/option[contains(text()='" + Option + "')]";
+		        	driver.findElement(By.xpath(ObjectXpath1)).click();
+		        	driver.findElement(By.xpath(ObjectXpath)).sendKeys(Keys.TAB, Keys.ENTER);
+		        	String selectedvalue = driver.findElement(By.xpath(ObjectXpath)).getAttribute("text");
+		        	if(!selectedvalue.trim().equalsIgnoreCase(Option.trim()))
+		        	{
+		        		stepStatus = false;
+		        	}
+		        }
+		        catch (Exception e)
+		        {
+		            stepStatus = false;
+		        }
+		        return stepStatus;
+			}
 	
 /* ######################################################################################################
  * Method Name: SelectOPtionByValue
@@ -258,11 +310,11 @@ public class WebLibrary extends FrameworkLibrary
     		Highlight(ObjectXpath);
     		ObjectXpath = ObjectXpath + "/option[@value='" + Option + "']";
         	driver.findElement(By.xpath(ObjectXpath)).click();
-        	String selectedvalue = driver.findElement(By.xpath(ObjectXpath)).getAttribute("text");
+        	/*String selectedvalue = driver.findElement(By.xpath(ObjectXpath)).getAttribute("text");
         	if(!selectedvalue.trim().equalsIgnoreCase(Option.trim()))
         	{
         		stepStatus = false;
-        	}
+        	}*/
         }
         catch (Exception e)
         {
@@ -270,14 +322,14 @@ public class WebLibrary extends FrameworkLibrary
         }
         return stepStatus;
 	}
-	
-	/* ######################################################################################################
-	 * Method Name: SelectOPtionByValueAndTab
-	 * Description: To select option from dropdown based on value
-	 * Input Parameters: Element Xpath , value of an option
-	 * Output: True/False
-	 * ######################################################################################################
-	 */
+
+/* ######################################################################################################
+ * Method Name: SelectOPtionByValueAndTab
+ * Description: To select option from dropdown based on value
+ * Input Parameters: Element Xpath , value of an option
+ * Output: True/False
+ * ######################################################################################################
+ */
 		public static Boolean SelectOPtionByValueAndTab(String ObjectXpath,String Option)
 		{
 			Boolean stepStatus = true;
@@ -286,13 +338,13 @@ public class WebLibrary extends FrameworkLibrary
 	    		Highlight(ObjectXpath);
 	    		String ObjectXpath1 = ObjectXpath + "/option[@value='" + Option + "']";
 	        	driver.findElement(By.xpath(ObjectXpath1)).click();
-	        	driver.findElement(By.xpath(ObjectXpath)).sendKeys(Keys.TAB, Keys.ENTER);
-	        	String selectedvalue = driver.findElement(By.xpath(ObjectXpath)).getAttribute("text");
+	        	driver.findElement(By.xpath(ObjectXpath1)).sendKeys(Keys.TAB, Keys.ENTER);
+	        	String selectedvalue = driver.findElement(By.xpath(ObjectXpath1)).getAttribute("text");
 	        	if(!selectedvalue.trim().equalsIgnoreCase(Option.trim()))
 	        	{
 	        		stepStatus = false;
 	        	}
-	        	driver.findElement(By.xpath(ObjectXpath)).sendKeys(Keys.TAB, Keys.ENTER);
+	        	//driver.findElement(By.xpath(ObjectXpath)).sendKeys(Keys.TAB, Keys.ENTER);
 	        }
 	        catch (Exception e)
 	        {
@@ -309,41 +361,43 @@ public class WebLibrary extends FrameworkLibrary
  * ######################################################################################################
  */
 	//@SuppressWarnings("deprecation")
-	public static WebDriver launchBrowser(String BrowserName)
-	{
-		WebDriver Tempdriver = null;
-		switch(BrowserName.toLowerCase())
+		public static WebDriver launchBrowser(String BrowserName)
 		{
-			case "firefox":
+			WebDriver Tempdriver = null;
+			switch(BrowserName.toLowerCase())
 			{
-				System.setProperty("webdriver.gecko.driver",GlobalVariables.CurrentDirectory + "\\" +"JarFiles\\BrowserServers\\geckodriver.exe");
-			    DesiredCapabilities dc = DesiredCapabilities.firefox();
-				dc.setCapability("marionette", true);
-				Tempdriver = new FirefoxDriver(dc);
-				break;
+				case "firefox":
+				{
+					System.setProperty("webdriver.gecko.driver",GlobalVariables.CurrentDirectory + "\\" +"JarFiles\\BrowserServers\\geckodriver.exe");
+				    /*DesiredCapabilities dc = DesiredCapabilities.firefox();
+					dc.setCapability("marionette", true);
+					*/
+					Tempdriver = new FirefoxDriver();
+					break;
+				}
+				case "internetexplorer":
+				{
+					DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+					capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+					capabilities.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
+					System.setProperty("webdriver.ie.driver", GlobalVariables.CurrentDirectory + "\\" +"JarFiles\\BrowserServers\\IEDriverServer.exe");
+					Tempdriver = new InternetExplorerDriver(capabilities);
+					break;
+				}
+				case "chrome":
+				{
+					System.setProperty("webdriver.chrome.driver",GlobalVariables.CurrentDirectory + "\\" +"JarFiles\\BrowserServers\\chromedriver.exe");
+					Tempdriver = new ChromeDriver();
+					break;
+				}
+				default:
+				{
+					System.out.println("please Select the correct browser");
+				}
 			}
-			case "internetexplorer":
-			{
-				DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
-				capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-				capabilities.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
-				System.setProperty("webdriver.ie.driver", GlobalVariables.CurrentDirectory + "\\" +"JarFiles\\BrowserServers\\IEDriverServer.exe");
-				Tempdriver = new InternetExplorerDriver(capabilities);
-				break;
-			}
-			case "chrome":
-			{
-				System.setProperty("webdriver.chrome.driver",GlobalVariables.CurrentDirectory + "\\" +"JarFiles\\BrowserServers\\chromedriver.exe");
-				Tempdriver = new ChromeDriver();
-				break;
-			}
-			default:
-			{
-				System.out.println("please Select the correct browser");
-			}
+			return Tempdriver;
 		}
-		return Tempdriver;
-	}
+		
 /* ######################################################################################################
  * Method Name: OpenUrl
  * Description: To Open a specified URL

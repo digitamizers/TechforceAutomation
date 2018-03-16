@@ -23,13 +23,12 @@ public class WorklogReport extends UserLibrary {
 			LogEventWithScreenshot("fail", "Unable to Enter Worklog Report Command");
 
 		// Select user
-		String WorklogReporters = new String(UsersReport);
+		String WorklogReporters = new String(WorklogReportUsers);
 		String GetWorklogs[] = WorklogReporters.split(",");
 
 		for (String User : GetWorklogs) {
 			//System.out.println(User);
-			// status = ClickElement("//input[@value='"+User+"']");
-			status = Exist("//input[@value='" + User + "']");
+			status = ClickElement("//input[@value='" + User + "']");
 			if (status)
 				LogEventWithScreenshot("info", "Clicked on " + User + " checkbox");
 			else
@@ -44,7 +43,7 @@ public class WorklogReport extends UserLibrary {
 		else
 			LogEventWithScreenshot("fail", "Unable to click  on OK button");
 
-		driver.findElement(By.xpath("//input[@type='date']")).sendKeys(FromDate, Keys.TAB, ToDate, Keys.TAB,
+		driver.findElement(By.xpath("//input[@type='date']")).sendKeys(WorklogReportFromDate, Keys.TAB, WorklogReportToDate, Keys.TAB,
 				Keys.ENTER);
 
 		/*
@@ -101,7 +100,7 @@ public class WorklogReport extends UserLibrary {
 			
 			LogEventWithScreenshot("info", "I Think we don't have issues");
 		}
-		wait(20);
+	
 		Logout();
 	}
 
@@ -122,9 +121,9 @@ public class WorklogReport extends UserLibrary {
 		else
 			LogEventWithScreenshot("fail", "Unable to Enter Worklog Report Command");
 		
-		driver.findElement(By.xpath("//input[@type='date']")).sendKeys(FromDate, Keys.TAB, ToDate, Keys.TAB,
-				Keys.ENTER);
-
+		driver.findElement(By.xpath("//input[@type='date']")).sendKeys(WorklogReportFromDate, Keys.TAB, WorklogReportToDate, Keys.TAB, Keys.ENTER);
+		
+		wait(10);
 		status = Exist("//p[text()='These are the Issues that you are looking for']");
 		if (status) {
 			// Click on chat window button
@@ -178,4 +177,5 @@ public class WorklogReport extends UserLibrary {
 		Logout();
 
 	}
+
 }
